@@ -12,7 +12,7 @@ jobs:
                           id: tt
                           uses: t0kapo/ttcheck@v1.2
                           with:
-                                html-file-path: template/innerhtml_tt.html
+                                html-file-path: templates/innerhtml_tt.html
                                 js-policy-file-path: policy.js
                         - name: Output run time
                           run: echo "This program took ${{ steps.tt.outputs.time }} seconds to run!"
