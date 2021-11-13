@@ -1,0 +1,21 @@
+name: Action Test2
+on:
+        push:
+                branches:
+                     - main
+jobs:
+        check-TrustedTypes-and-policy:
+                runs-on: ubuntu-latest
+                steps:
+                        - uses: actions/checkout@v2
+                        - name: Check policy in HTML
+                          id: tt
+                          uses: t0kapo/ttcheck@v1.1
+                          with:
+                                html-file-path: template/innerhtml_tt.html
+                                js-policy-file-path: policy.js
+                        - name: Output run time
+                          run: echo "This program took ${{ steps.tt.outputs.time }} seconds to run!"
+                        - uses: stefanzweifel/git-auto-commit-action@v4.12.0
+                          with:
+                                  commit_message: Checked tt and policy.
